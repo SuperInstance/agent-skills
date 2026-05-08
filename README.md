@@ -1,86 +1,49 @@
-# 📦 Agent Skills — Installable Intelligence
+# Agent Skills
 
-Smart applications that any agent (or human) can drop into a project, customize, and improve through use.
+**Smart applications any agent can install. Clone, configure, run. No fleet membership required.**
+
+Every skill in this registry is a self-contained application that installs by cloning, gets better with feedback, and works without central authority. No monorepo. No workspace. No API gateways.
+
+---
 
 ## The Idea
 
-Every tool in this registry is a **git-agent skill** — a self-contained application that:
+An agent has a job to do — monitoring a service, spreading information across the fleet, generating dream content for training. Instead of writing that capability from scratch, the agent clones a skill.
 
-1. **Installs by cloning** — `git clone` into your project, configure, run
-2. **Gets better with feedback** — the agent creator's feedback improves the skill for everyone
-3. **Works standalone** — no fleet membership required, no central authority
-4. **Composes freely** — pipe murmur output into spreader, spreader into dream-engine
+```
+git clone https://github.com/SuperInstance/agent-skills.git ./skills
+```
+
+The skill comes with its own README, its own tests, its own configuration. The agent customizes it, runs it, and — if they choose — contributes improvements back.
+
+---
 
 ## Available Skills
 
-| Skill | What It Does | Install |
-|-------|-------------|---------|
-| 🫧 **murmur** | All-night thinking agent. Point at a topic, let it think. Budget-agnostic. | `git clone https://github.com/SuperInstance/murmur-agent.git .murmur` |
-| 🌊 **spreader** | One idea, many perspectives. Fans out across specialist views with synthesis. | `git clone https://github.com/SuperInstance/spreader-agent.git .spreader` |
-| 🛶 **dream-engine** | Overnight content generation. Schedule narratives while your computer sleeps. | `git clone https://github.com/SuperInstance/dream-engine.git .dream-engine` |
-| ✨ **luciddreamer** | Autonomous 30-min content cycle. Compounding knowledge graph, forever stream. | `git clone https://github.com/SuperInstance/luciddreamer-ai.git .luciddreamer` |
+| Skill | What It Does |
+|-------|-------------|
+| **[fleet-murmur](https://github.com/SuperInstance/fleet-murmur)** | Fleet-wide murmur propagation — agents spread signals with controlled entropy |
+| **[fleet-spread](https://github.com/SuperInstance/fleet-spread)** | Information dissemination — firehose or drip, topic-filtered |
+| **[plato-client](https://github.com/SuperInstance/plato-client)** | PLATO tile client — read, write, subscribe to room updates |
+| **[mermaid-engine](https://github.com/SuperInstance/mermaid-engine)** | Generate mermaid diagrams from structured data |
+| **[dream-engine](https://github.com/SuperInstance/dream-engine)** | Pseudo-random content generation for synthetic training |
+| **[swarm-monitor](https://github.com/SuperInstance/swarm-monitor)** | Fleet health monitoring and alerting |
 
-## How Skills Work
+## How Skills Get Better
 
-```
-Your Project
-├── .murmur/          ← Think about a topic overnight
-├── .spreader/        ← Spread an idea across perspectives
-├── .dream-engine/    ← Generate scheduled content
-└── .luciddreamer/    ← Autonomous content stream
-```
+Each skill has a `feedback/` directory. When an agent customizes a skill and improves it, the improvement can be contributed back. The skill doesn't have a single maintainer — it has a fleet of users who make it better through use.
 
-Each skill is independent. Install one or all. They don't fight.
+---
 
-## The Feedback Loop
+## How It Fits
 
-```
-Agent uses skill → discovers rough edges → feedback to skill repo
-    → skill improves → every agent benefits
-```
+- **[agent-skills](https://github.com/SuperInstance/agent-skills)** — installable intelligence (this)
+- **[agent-forge](https://github.com/SuperInstance/agent-forge)** — the framework that runs skills
+- **[bootstrap-spark](https://github.com/SuperInstance/bootstrap-spark)** — onboarding that discovers installed skills
+- **[baton-skill](https://github.com/SuperInstance/baton-skill)** — handoff that preserves skill state
 
-This is the key insight: **the agent creator's feedback IS the product improvement cycle.** Not bug reports from users — actual usage feedback from agents who push the tools to their limits.
-
-## Building a New Skill
-
-1. Create a repo with `CHARTER.md` (purpose) and `BOOTCAMP.md` (how to use)
-2. Build the core engine — no external dependencies that aren't optional
-3. Make it budget-agnostic: works with any API budget or local hardware
-4. Git-native output: every result is a file, every run is a commit
-5. Add to this registry with a one-line install command
-
-## Design Principles
-
-- **Tolerant of silence**: If the API is down, wait. If the budget is empty, pause. Never die angry.
-- **Whatever it gets done is great**: 10 calls/day or 10,000 — both produce value.
-- **The repo IS the interface**: No dashboards. Files and git commits.
-- **Fork-first**: Every fork is independent. No central authority.
-- **Composable**: Output of one skill is input to another.
-
-## Composability Examples
-
-```bash
-# Think about a topic, then spread the insights
-cd .murmur && npm run think -- --topic "event-driven architecture"
-cd ../.spreader && npm run spread -- --idea "$(cat ../.murmur/murmur-output/SUMMARY.md)"
-
-# Dream about whatever murmur found
-cd .dream-engine && configure with murmur-output as context
-
-# Let luciddreamer run forever, spreading the best insights every 30 min
-# (pipe luciddreamer output into spreader for analysis)
-```
-
-## For Agent Builders
-
-If you're building agents (human or AI), these skills are your toolkit:
-- **Murmur** for deep research and exploration
-- **Spreader** for decision-making and perspective-gathering
-- **Dream-engine** for scheduled content production
-- **Luciddreamer** for autonomous, compounding knowledge streams
-
-Each one is a git-agent that lives in your project and works while you do other things.
+---
 
 ## License
 
-All skills are MIT licensed unless otherwise noted in their individual repos.
+MIT
