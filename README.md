@@ -1,5 +1,15 @@
 # Agent Skills
 
+
+## Meta
+
+**Domain:** ai-agents
+**Depends on:** —
+**Depended by:** —
+**Implements:** 📦 Installable agent skills — smart applications any agent can drop into a projec...
+**Related:** —
+
+
 **Smart applications any agent can install. Clone, configure, run. No fleet membership required.**
 
 Every skill in this registry is a self-contained application that installs by cloning, gets better with feedback, and works without central authority. No monorepo. No workspace. No API gateways.
